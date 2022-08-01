@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('flight_detail_id')->constrained('flight_details');
+            $table->foreignId('airline_id')->constrained('airlines');
             $table->timestamps();
         });
     }

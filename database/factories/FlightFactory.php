@@ -17,7 +17,8 @@ class FlightFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'flight_detail_id' => $this->faker->numberBetween(1,19),
+            'airline_id' => $this->faker->numberBetween(1,19),
         ];
     }
 }

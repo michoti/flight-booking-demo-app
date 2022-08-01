@@ -17,7 +17,8 @@ class FlightDetailFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'flight_source'      => $this->faker->word(),
+            'flight_destination' => $this->faker->word(),
         ];
     }
 }

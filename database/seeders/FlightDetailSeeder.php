@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FlightDetail;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class FlightDetailSeeder extends Seeder
      */
     public function run()
     {
-        //
+        FlightDetail::factory(20)->create();
     }
 }
