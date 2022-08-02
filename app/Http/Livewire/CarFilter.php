@@ -8,6 +8,7 @@ use Livewire\Component;
 class CarFilter extends Component
 {
     public $search = '';
+    public $location;
     public function render()
     {
         return view('livewire.car-filter', [
@@ -15,7 +16,7 @@ class CarFilter extends Component
                                 ? Car::all()
                                 : Car::where('name', 'like', '%'.$this->search.'%')
                                     ->orWhere('location', 'like', '%'.$this->search.'%')
-                                    ->get()
+                                    ->get()                 
         ]);
     }
 }
