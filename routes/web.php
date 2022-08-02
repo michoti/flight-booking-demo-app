@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\CarFilter;
 use App\Http\Livewire\FlightFilter;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/flight', FlightFilter::class);
+Route::get('/cars', CarFilter::class);
