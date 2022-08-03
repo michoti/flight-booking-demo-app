@@ -17,5 +17,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/flight', FlightFilter::class);
-// Route::get('/cars', CarFilter::class);
-Route::get('/cars', [CarFilterController::class, 'index']);
+ Route::get('/cars', CarFilter::class);
+// Route::get('/cars', [CarFilterController::class, 'index']);

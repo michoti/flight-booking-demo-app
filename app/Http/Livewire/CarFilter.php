@@ -13,10 +13,10 @@ class CarFilter extends Component
     {
         return view('livewire.car-filter', [
             'cars' =>$this->search === null
-                                ? Car::all()
-                                : Car::where('name', 'like', '%'.$this->search.'%')
+                                ? Car::all() : Car::where('name', 'like', '%'.$this->search.'%')
                                     ->orWhere('location', 'like', '%'.$this->search.'%')
-                                    ->get()                 
-        ]);
+                                    ->get(),
+            'locations' => Car::get(),                                        
+        ])->layout('layouts.app');
     }
 }

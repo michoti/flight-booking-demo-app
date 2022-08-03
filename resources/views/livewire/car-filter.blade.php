@@ -15,12 +15,14 @@
         <div>
             <div>
                 <input wire:model.debounce.500ms='search' type="search">
-                <select name="" id="" disabled="disabled">
-                    <option value="0"></option>
-                    @foreach ($locations as $location)
-                    <option value="0">{{$location->location}}</option>
-                    @endforeach
-                </select>
+                <div>
+                    <select name="" id="" disabled="disabled">
+                        <option value="">Choose location</option>
+                        @foreach ($locations as $location)
+                        <option value="{{ $location->id }}">{{$location->location}}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
 

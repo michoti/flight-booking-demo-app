@@ -14,8 +14,9 @@
 <body>
 
     <div class="font-sans text-gray-900 antialiased">
-        {{-- {{ $slot }} --}}
-        <livewire:car-filter />
+        {{ $slot }}
+        {{--
+        <livewire:car-filter /> --}}
     </div>
 
     {{-- @foreach ($cars as $car)
