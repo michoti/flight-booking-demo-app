@@ -3,7 +3,6 @@
         <div>
             <ul>
                 <li>
-                    <label><input type="checkbox" name="" id=""> Airline</label>
                 </li>
                 <li>
                     <label><input type="checkbox" name="" id=""> Airline</label>
@@ -17,9 +16,9 @@
     <nav>
         <div>
             <div>
-                <form>
-                    <input type="search" placeholder="Search..">
-                    <label>Departure<input type="date" placeholder="Search.."></label>
+                <form wire:submit.prevent='searching'>
+                    <input wire:model='search' type="search" placeholder="Search..">
+                    <label>Departure<input wire:model='departing_date' type="date" placeholder="Search.."></label>
                     <label>Arrival<input type="date" placeholder="Search.."></label>
                     <button type="submit">search</button>
                 </form>
@@ -32,16 +31,24 @@
                 <tr>
                     <th>Source</th>
                     <th>Destination</th>
-                    <th>Source</th>
+                    <th>Date</th>
+                    <th>Departure time</th>
+                    <th>Arrival time</th>
+                    <th>Airline</th>
                 </tr>
             </thead>
         </thead>
         <tbody>
+            @foreach ($flights as $flight)
             <tr>
-                <td>source</td>
-                <td>source</td>
-                <td>source</td>
+                <td class="py-2 px-6">{{ $flight->flight_detail->flight_source}}</td>
+                <td class="py-2 px-6">{{ $flight->flight_detail->flight_destination}}</td>
+                <td class="py-2 px-6">{{ $flight->flight_detail->date}}</td>
+                <td class="py-2 px-6">{{ $flight->flight_detail->departure_time}}</td>
+                <td class="py-2 px-6">{{ $flight->flight_detail->arrival_time}}</td>
+                <td class="py-2 px-6">{{ $flight->airline->name}}</td>
             </tr>
+            @endforeach
         </tbody>
     </table>
     <section>

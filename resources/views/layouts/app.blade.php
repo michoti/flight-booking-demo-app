@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    @vite('resources/css/app.css')
     <livewire:styles />
 </head>
 
@@ -15,14 +15,7 @@
 
     <div class="font-sans text-gray-900 antialiased">
         {{ $slot }}
-        {{--
-        <livewire:car-filter /> --}}
     </div>
-
-    {{-- @foreach ($cars as $car)
-    <p>{{$car->location}}</p>
-
-    @endforeach --}}
 
     <livewire:scripts />
 </body>
