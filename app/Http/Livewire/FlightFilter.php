@@ -5,9 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Flight;
 use App\Models\FlightDetail;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class FlightFilter extends Component
 {
+    use WithPagination;
     public $flights;
     public $search = '';
     public $departing_date;
