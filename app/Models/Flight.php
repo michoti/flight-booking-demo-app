@@ -12,4 +12,14 @@ class Flight extends Model
     protected $table = 'flights';
 
     protected $fillable = ['flight_detail_id','airline_id'];
+
+    public function flight_detail()
+    {
+        return $this->belongsTo(FlightDetail::class);
+    }
+
+    public function airline()
+    {
+        return $this->belongsTo(Airline::class);
+    }
 }

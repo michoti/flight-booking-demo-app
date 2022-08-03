@@ -12,4 +12,9 @@ class Airline extends Model
     protected $table = 'airlines';
 
     protected $fillable = ['name'];
+
+    public function flights()
+    {
+        return $this->hasMany(Flight::class);
+    }
 }

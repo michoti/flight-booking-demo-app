@@ -12,4 +12,9 @@ class FlightDetail extends Model
     protected $table = 'flight_details';
 
     protected $fillable = ['flight_source', 'flight_destination'];
+
+    public function flight()
+    {
+        return $this->hasMany(Flight::class);
+    }
 }

@@ -15,6 +15,6 @@ class AirlineSeeder extends Seeder
      */
     public function run()
     {
-        Airline::factory(20)->create();
+        Airline::factory(5)->create();
     }
 }
