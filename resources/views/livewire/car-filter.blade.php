@@ -1,7 +1,10 @@
 <div>
     <div>
         <aside>
-            sidebar
+            <label><input type="checkbox" wire:model='yearInputs' value="2010">2010</label>
+            <label><input type="checkbox" wire:model='yearInputs' value="2011">2011</label>
+            <label><input type="checkbox" wire:model='yearInputs' value="2012">2012</label>
+            <label><input type="checkbox" wire:model='yearInputs' value="2013">2013</label>
         </aside>
         <div>
             {{-- <input wire:model.debounce.500ms='search' type="search">

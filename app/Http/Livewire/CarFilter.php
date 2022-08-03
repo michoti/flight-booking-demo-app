@@ -8,11 +8,11 @@ use Livewire\Component;
 class CarFilter extends Component
 {
     // public $search = '';
-    public $cars;
-    public $name = '';
+    public $cars, $name = '';
     public $location = '';
-    public $from;
-    public $to;
+    public $from, $to;
+    public $yearInputs = [];
+    protected $queryString = ['yearInputs'];
 
     public function mount()
     {
@@ -48,7 +48,11 @@ class CarFilter extends Component
             $car = $car->whereBetween('release_date',[$this->from.'00.00.00', $this->from.'23.59.59']);
         }
 
-        $this->cars = $car->get();        
+        $this->cars = $car
+                      ->when($this->yearInputs, function($query) {
+                          $query->whereIn('year', $this->yearInputs);
+                      })
+                      ->get();        
     }
     // public function render()
     // {
@@ -64,6 +68,8 @@ class CarFilter extends Component
     public function render()
     {
         return view('livewire.car-filter', [
+
+        
         
 
         ])->layout('layouts.app');
