@@ -19,6 +19,9 @@ class FlightDetailFactory extends Factory
         return [
             'flight_source'      => $this->faker->word(),
             'flight_destination' => $this->faker->word(),
+            'date'               => $this->faker->date(),
+            'departure_time'     => $this->faker->time(),
+            'arrival_time'     => $this->faker->time(),
         ];
     }
 }

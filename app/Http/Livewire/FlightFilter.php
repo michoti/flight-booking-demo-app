@@ -13,7 +13,8 @@ class FlightFilter extends Component
     public function render()
     {
         return view('livewire.flight-filter', [
-            'flightListing' => FlightDetail::where('flight_source', 'like', '%'.$this->search.'%')->get()
-        ]);
+            'flightListing' => FlightDetail::where('flight_source', 'like', '%'.$this->search.'%')
+                       ->get()
+        ])->layout('layouts.app');
     }
 }
