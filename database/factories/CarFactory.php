@@ -23,6 +23,7 @@ class CarFactory extends Factory
             'year' => $this->faker->numberBetween(2006,2021),
             'fueltype' => $this->faker->word(),
             'transmission' => $this->faker->word(),
+            'release_date' => $this->faker->date(),
         ];
     }
 }

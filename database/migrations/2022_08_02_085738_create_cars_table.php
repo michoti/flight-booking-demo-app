@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('year');
             $table->string('fueltype');
             $table->string('transmission');
+            $table->date('release_date');
             $table->timestamps();
         });
     }

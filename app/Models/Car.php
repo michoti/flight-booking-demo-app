@@ -18,5 +18,6 @@ class Car extends Model
         'year',
         'fueltype',
         'transmission',
+        'release_date',
     ];
 }
