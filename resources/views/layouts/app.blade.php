@@ -21,6 +21,16 @@
     </div>
 
     <livewire:scripts />
+    <script>
+        window.addEventListener('openTest', function(e) {
+            const container = document.getElementById('content');
+
+            container.innerHTML= `
+                      <div>
+                        <p>${e.detail.flightSource} to ${e.detail.flightDestination}</p>
+                    </div>`;
+        })
+    </script>
 </body>
 
 </html>

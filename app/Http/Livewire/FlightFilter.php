@@ -16,6 +16,15 @@ class FlightFilter extends Component
     {
         $this->flights = Flight::all();
     }
+
+    public function displayContent($id)
+    {
+        $content = Flight::find($id)->flight_detail;
+        $this->dispatchBrowserEvent('openTest', [
+            'flightSource' => $content->flight_source,
+            'flightDestination' => $content->flight_destination,
+        ]);        
+    }
     public function render()
     {
         $this->flights = Flight::when($this->airlines, function($query) {

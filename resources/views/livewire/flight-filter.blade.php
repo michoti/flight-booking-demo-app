@@ -7,12 +7,16 @@
         <label>Departure date <input wire:model='date' type="date"></label>
     </div>
     @foreach ($flights as $flight)
-    <div>
+    <div wire:click='displayContent({{ $flight->id }})'>
         <p>{{ $flight->flight_detail->departure_time}} - {{ $flight->flight_detail->arrival_time}}</p>
         <p>{{ $flight->flight_detail->flight_source}} to {{ $flight->flight_detail->flight_destination}}</p>
         <div>
-            {{ $flight->airline->name}}
+            <i class="fa fa-plane" aria-hidden="true"></i> {{ $flight->airline->name}}
         </div>
     </div>
     @endforeach
+
+    <div id="content">
+
+    </div>
 </div>
