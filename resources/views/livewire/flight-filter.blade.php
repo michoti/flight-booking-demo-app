@@ -4,7 +4,8 @@
         <label><input type="checkbox" wire:model='airlines' value="2"> Airline 2</label>
     </div>
     <div>
-        <label>Departure date <input wire:model='date' type="date"></label>
+        <label>Departing date <input wire:model='departing_date' type="date"></label>
+        <label>Returning date <input wire:model='returning_date' type="date"></label>
     </div>
     @foreach ($flights as $flight)
     <div wire:click='displayContent({{ $flight->id }})'>

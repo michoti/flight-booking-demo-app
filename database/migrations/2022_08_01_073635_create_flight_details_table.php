@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('flight_source');
             $table->string('flight_destination');
-            $table->date('date');
+            $table->date('departing_date');
+            $table->date('returning_date');
             $table->time('departure_time');
             $table->time('arrival_time');
             $table->timestamps();

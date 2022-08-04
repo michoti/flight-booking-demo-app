@@ -10,11 +10,13 @@ class FlightDetail extends Model
     use HasFactory;
 
     protected $table = 'flight_details';
+    public $timestamps = false;
 
     protected $fillable = [
         'flight_source',
         'flight_destination',
-        'date',
+        'departing_date',
+        'returning_date',
         'departure_time',
         'arrival_time',
     ];

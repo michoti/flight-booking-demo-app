@@ -27,8 +27,15 @@
 
             container.innerHTML= `
                       <div>
-                        <p>${e.detail.flightSource} to ${e.detail.flightDestination}</p>
-                    </div>`;
+                        <p>${e.detail.flightDeparture} to ${e.detail.flightArrival}</p>
+                        <div>Airline: ${e.detail.flightAirline}</div>
+                        <div>
+                            <p>${e.detail.flightDeparture} - ${e.detail.flightSource}</p>
+                        </div> 
+                        <div>
+                            <p>${e.detail.flightArrival} - ${e.detail.flightDestination}</p>
+                        </div>                           
+                      </div>`;
         })
     </script>
 </body>
