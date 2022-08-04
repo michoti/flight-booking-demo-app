@@ -3,23 +3,10 @@
     <div class="flex flex-row flex-wrap flex-1 flex-grow content-start pl-16">
 
         <div class="h-40 lg:h-20 w-full flex flex-wrap">
-            <nav id="header"
-                class="bg-gray-200 w-full lg:max-w-sm flex items-center border-b-1 border-gray-300 order-2 lg:order-1">
-
-                <div class="px-2 w-full">
-                    <select name=""
-                        class="bg-gray-300 border-2 border-gray-200 rounded-full w-full py-3 px-4 text-gray-500 font-bold leading-tight focus:outline-none focus:bg-white focus:shadow-md"
-                        id="form-field2">
-                        <option value="Default">default</option>
-                        <option value="A">report a</option>
-                        <option value="B">report b</option>
-                        <option value="C">report c</option>
-                    </select>
-                </div>
-
-            </nav>
-            <nav id="header1" class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
-                <form>
+            <div class="bg-gray-200 w-full lg:max-w-sm flex items-center border-b-1 border-gray-300 order-2 lg:order-1">
+            </div>
+            <nav class="bg-gray-100 w-auto flex-1 border-b-1 border-gray-300 order-1 lg:order-2">
+                <form wire:submit.prevent='searching'>
                     <div class="flex h-full justify-start items-center">
 
                         <!--Search-->
@@ -33,9 +20,13 @@
                                 </svg>
                             </div>
 
-                            <input id="search-toggle" type="search" placeholder="search"
-                                class="block w-full bg-gray-200 focus:outline-none focus:bg-white focus:shadow-md text-gray-700 font-bold rounded-full pl-12 pr-4 py-3">
-
+                            <select wire:model='source'>
+                                <option>From</option>
+                                @foreach ($flights as $flight)
+                                <option value={{ $flight->flight_detail->flight_source }}>{{
+                                    $flight->flight_detail->flight_source }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <!-- / Search-->
 
@@ -56,7 +47,10 @@
                         <!-- / date-->
 
                         <div class="px-6">
-                            <button>submit</button>
+                            <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600
+                                 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none 
+                                 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
+                                 text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit</button>
                         </div>
 
                     </div>
@@ -69,70 +63,7 @@
         <div id="dash-content" class="bg-gray-200 py-6 lg:py-0 w-full lg:max-w-sm flex flex-wrap content-start">
 
             <div class="w-1/2 lg:w-full">
-                <div
-                    class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i
-                                    class="fa fa-wallet fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">$3249 <span class="text-green-500"><i
-                                        class="fas fa-caret-up"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">Total Revenue</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-1/2 lg:w-full">
-                <div
-                    class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i
-                                    class="fas fa-users fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">249 <span class="text-orange-500"><i
-                                        class="fas fa-exchange-alt"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">Total Users</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-1/2 lg:w-full">
-                <div
-                    class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i
-                                    class="fas fa-user-plus fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">2 <span class="text-yellow-600"><i
-                                        class="fas fa-caret-up"></i></span></h3>
-                            <h5 class="font-bold text-gray-500">New Users</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-1/2 lg:w-full">
-                <div
-                    class="border-2 border-gray-400 border-dashed hover:border-transparent hover:bg-white hover:shadow-xl rounded p-6 m-2 md:mx-10 md:my-6">
-                    <div class="flex flex-col items-center">
-                        <div class="flex-shrink pr-4">
-                            <div class="rounded-full p-3 bg-gray-300"><i
-                                    class="fas fa-server fa-fw fa-inverse text-indigo-500"></i></div>
-                        </div>
-                        <div class="flex-1">
-                            <h3 class="font-bold text-3xl">152 days</h3>
-                            <h5 class="font-bold text-gray-500">Server Uptime</h5>
-                        </div>
-                    </div>
-                </div>
+                <label for=""><input wire:model='airlines' type="checkbox" value="1"> voluptas</label>
             </div>
 
         </div>

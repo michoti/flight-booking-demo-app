@@ -12,7 +12,7 @@ class CarFilter extends Component
     public $location = '';
     public $from, $to;
     public $yearInputs = [];
-    protected $queryString = ['yearInputs'];
+    // protected $queryString = ['yearInputs'];
 
     public function mount()
     {
@@ -54,24 +54,17 @@ class CarFilter extends Component
                       })
                       ->get();        
     }
-    // public function render()
-    // {
-    //     return view('livewire.car-filter', [
-    //         'cars' =>$this->search === null
-    //                             ? Car::all() : Car::where('name', 'like', '%'.$this->search.'%')
-    //                                 ->orWhere('location', 'like', '%'.$this->search.'%')
-    //                                 ->get(),
-    //         'locations' => Car::get(),                                        
-    //     ])->layout('layouts.app');
-    // }
 
     public function render()
     {
-        return view('livewire.car-filter', [
+        $this->cars = Car::when($this->yearInputs, function($query) {
+                          $query->whereIn('year', $this->yearInputs);
+                      })
+                      ->when($this->name, function($query) {
+                        $query->where('name', 'like', '%'.$this->name.'%');
+                      })
+                      ->get(); 
 
-        
-        
-
-        ])->layout('layouts.app');
+        return view('livewire.car-filter')->layout('layouts.app');
     }
 }

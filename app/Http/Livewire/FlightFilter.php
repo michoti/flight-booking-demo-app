@@ -9,21 +9,24 @@ use Livewire\WithPagination;
 
 class FlightFilter extends Component
 {
-    use WithPagination;
     public $flights;
+    public $airlines = [];
     public $search = '';
+
+    public $source, $destination;
     public $departing_date;
 
-    public function mount()
-    {
-        $this->flights = Flight::all();
-    }
+    // public function mount($flights)
+    // {
+    //     $this->flights = $flights;
+    // }
 
     public function searching()
     {
-
         
     }
+    
+
 
     public function render()
     {

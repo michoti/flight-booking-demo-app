@@ -22,4 +22,15 @@ class Flight extends Model
     {
         return $this->belongsTo(Airline::class);
     }
+
+    public static function checkBoxFilter($entries,array $parameter,string $column)
+    {
+        $filtered = Flight::query()
+                          ->when($parameter, function($query) use($parameter, $column) {
+                              $query->whereIn($column, $parameter);
+                          })->get();
+        $entries = $filtered;
+
+        return $entries;
+    }
 }
