@@ -10,10 +10,6 @@
                 $airlines)) checked @endif>
                 {{$airline->name}}</label>
             @endforeach
-
-            airlines: {{ var_export($airlines)}}
-            {{-- <label><input type="checkbox" wire:model='airlines' value="1"> Airline</label>
-            <label><input type="checkbox" wire:model='airlines' value="2"> Airline 2</label> --}}
         </div>
     </div>
     <div class="main-content">
