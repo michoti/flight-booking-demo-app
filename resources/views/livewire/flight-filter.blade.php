@@ -2,7 +2,7 @@
     <div class="side-bar">
         <div class="airline-checkbox">
             <div>
-                <h5>Filter by</h5>
+                <h5>Filters</h5>
             </div>
             <label><input type="checkbox" wire:model='airlines' value="1"> Airline</label>
             <label><input type="checkbox" wire:model='airlines' value="2"> Airline 2</label>
@@ -11,12 +11,17 @@
     <div class="main-content">
         <div class="showcase-area">
             <div class="search-inputs">
-                <select>
+                <select wire:model='source'>
                     <option>Choose source</option>
-                    <option value="">Nairobi</option>
-                    <option value="">Nairobi</option>
-                    <option value="">Nairobi</option>
-                    <option value="">Nairobi</option>
+                    @foreach ($flight_sources as $flight)
+                    <option value="{{$flight->flight_source}}">{{$flight->flight_source}}</option>
+                    @endforeach
+                </select>
+                <select wire:model='destination'>
+                    <option>Choose destination</option>
+                    @foreach ($flight_destinations as $flight)
+                    <option value="{{$flight->flight_destination}}">{{$flight->flight_destination}}</option>
+                    @endforeach
                 </select>
                 <label>Departing date <input wire:model='departing_date' type="date"></label>
                 <label>Returning date <input wire:model='returning_date' type="date"></label>

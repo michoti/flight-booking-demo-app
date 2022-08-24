@@ -3,6 +3,7 @@
 use App\Http\Controllers\CarFilterController;
 use App\Http\Livewire\CarFilter;
 use App\Http\Livewire\FlightFilter;
+use App\Models\FlightDetail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/flights', FlightFilter::class);
+Route::get('/flights', function(){
+
+    $flight_source = FlightDetail::get('flight_source');
+    $flight_destination = FlightDetail::get('flight_destination');
+
+    return view('layouts.app', [
+        'flight_sources' => $flight_source,
+        'flight_destinations' => $flight_destination,
+    ]);
+});
  Route::get('/cars', CarFilter::class);
 // Route::get('/cars', [CarFilterController::class, 'index']);

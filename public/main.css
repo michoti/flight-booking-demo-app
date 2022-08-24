@@ -12,6 +12,7 @@ body {
 .side-bar {
     height: 100%;
     width: 10rem;
+    background: red;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -19,6 +20,7 @@ body {
     border-right: 1px solid grey;
     padding-top: 3rem;
     overflow-x: hidden;
+
 }
 
 .side-bar .airline-checkbox {
@@ -101,5 +103,9 @@ body {
 }
 
 .main-content .right-side-bar {
-    align-self: center;
+    align-self: flex-start;
+}
+
+.right-side-bar #content {
+    margin: 3.45rem 1.95rem;
 }

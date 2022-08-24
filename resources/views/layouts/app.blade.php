@@ -18,7 +18,7 @@
 <body>
 
     <div>
-        {{ $slot }}
+        <livewire:flight-filter :flight_sources='$flight_sources' :flight_destinations='$flight_destinations' />
     </div>
 
     <livewire:scripts />
@@ -26,8 +26,11 @@
         window.addEventListener('openTest', function(e) {
             const container = document.getElementById('content');
 
-            container.innerHTML= `
-                      <div>
+            const div = document.createElement('div');
+            div.classList.add('clicked-flight');
+
+
+            div.innerHTML= `
                         <p>${e.detail.flightDeparture} to ${e.detail.flightArrival}</p>
                         <div>Airline: ${e.detail.flightAirline}</div>
                         <div>
@@ -35,8 +38,9 @@
                         </div> 
                         <div>
                             <p>${e.detail.flightArrival} - ${e.detail.flightDestination}</p>
-                        </div>                           
-                      </div>`;
+                        </div>`;
+
+            container.appendChild(div);          
         })
     </script>
 </body>

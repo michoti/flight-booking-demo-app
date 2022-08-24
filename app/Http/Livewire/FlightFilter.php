@@ -10,9 +10,13 @@ use Livewire\WithPagination;
 class FlightFilter extends Component
 {  
     public $flights;
+    public $source;
+    public $destination;
     public $departing_date;
     public $returning_date;
     public $airlines = [];
+    public $flight_sources;
+    public $flight_destinations;
     public function mount()
     {
         $this->flights = Flight::all();
@@ -36,13 +40,40 @@ class FlightFilter extends Component
         $this->flights = Flight::when($this->airlines, function($query) {
                                 $query->whereIn('airline_id', $this->airlines);
                             })
+                            ->when($this->source, function($query) {
+                                $query->whereHas('flight_detail', function($q) {
+                                    $q->where('flight_source', $this->source );
+                                });
+                            })
+                            ->when($this->destination, function($query) {
+                                $query->whereHas('flight_detail', function($q) {
+                                    $q->where('flight_destination', $this->destination );
+                                });
+                            })
+                            ->when($this->source && $this->destination, function($query) {
+                                $query->whereHas('flight_detail', function($q) {
+                                    $q->where('flight_source', $this->source )
+                                      ->where('flight_destination', $this->destination );
+                                });
+                            })
                             ->when($this->departing_date, function($query) {
                                 $query->whereHas('flight_detail', function($q) {
                                     $q->whereDate('departing_date', '>=', $this->departing_date );
                                 });
                             })
+                            ->when($this->returning_date, function($query) {
+                                $query->whereHas('flight_detail', function($q) {
+                                    $q->whereDate('returning_date', '<=', $this->returning_date );
+                                });
+                            })
+                            ->when($this->returning_date && $this->departing_date, function($query) {
+                                $query->whereHas('flight_detail', function($q) {
+                                    $q->whereDate('departing_date', '>=', $this->departing_date )
+                                      ->whereDate('returning_date', '<=', $this->returning_date );
+                                });
+                            })
                             ->get();
 
-        return view('livewire.flight-filter')->layout('layouts.app');
+        return view('livewire.flight-filter');
     }
 }
