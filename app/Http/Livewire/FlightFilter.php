@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Airline;
 use App\Models\Flight;
 use App\Models\FlightDetail;
 use Livewire\Component;
@@ -21,6 +22,9 @@ class FlightFilter extends Component
     
     public function mount()
     {
+
+        // $ids = Airline::query()->pluck('id')->toArray();
+        // $this->airlines = array_fill_keys($ids,false);
         $this->flights = Flight::all();
     }
 

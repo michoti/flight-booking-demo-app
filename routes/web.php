@@ -20,10 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/flights', function(){
 
-    $available_airlines = Airline::get('name');
+    $available_airlines = Airline::get();
 
-    $flight_source = FlightDetail::get('flight_source');
-    $flight_destination = FlightDetail::get('flight_destination');
+    $flight_source = FlightDetail::get();
+    $flight_destination = FlightDetail::get();
 
     return view('layouts.app', [
         'flight_sources' => $flight_source,
