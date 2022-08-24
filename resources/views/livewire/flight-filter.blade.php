@@ -12,13 +12,13 @@
         <div class="showcase-area">
             <div class="search-inputs">
                 <select wire:model='source'>
-                    <option>Choose source</option>
+                    <option value="">Choose source</option>
                     @foreach ($flight_sources as $flight)
                     <option value="{{$flight->flight_source}}">{{$flight->flight_source}}</option>
                     @endforeach
                 </select>
                 <select wire:model='destination'>
-                    <option>Choose destination</option>
+                    <option value="">Choose destination</option>
                     @foreach ($flight_destinations as $flight)
                     <option value="{{$flight->flight_destination}}">{{$flight->flight_destination}}</option>
                     @endforeach

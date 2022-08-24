@@ -18,7 +18,8 @@
 <body>
 
     <div>
-        <livewire:flight-filter :flight_sources='$flight_sources' :flight_destinations='$flight_destinations' />
+        <livewire:flight-filter :flight_sources='$flight_sources' :flight_destinations='$flight_destinations'
+            :available_airlines='$available_airlines' />
     </div>
 
     <livewire:scripts />

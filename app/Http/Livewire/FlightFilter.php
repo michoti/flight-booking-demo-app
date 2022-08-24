@@ -15,8 +15,10 @@ class FlightFilter extends Component
     public $departing_date;
     public $returning_date;
     public $airlines = [];
+    public $available_airlines;
     public $flight_sources;
     public $flight_destinations;
+    
     public function mount()
     {
         $this->flights = Flight::all();

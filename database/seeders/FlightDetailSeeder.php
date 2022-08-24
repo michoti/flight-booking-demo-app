@@ -23,6 +23,8 @@ class FlightDetailSeeder extends Seeder
             ['flight_source' => 'Kampala'],
             ['flight_source' => 'Addis ababa'],
             ['flight_source' => 'Kinshasa'],
+        ))
+        ->state(new Sequence(
             ['flight_destination' => 'London'],
             ['flight_destination' => 'Sydney'],
             ['flight_destination' => 'New York'],
