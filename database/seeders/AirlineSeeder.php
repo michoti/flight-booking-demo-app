@@ -21,6 +21,8 @@ class AirlineSeeder extends Seeder
             ['name' => 'Kenya airways'],
             ['name' => 'Rwanda airways'],
             ['name' => 'Ethiopian airways'],
+            ['name' => 'Etihad airways'],
+            ['name' => 'Qatar airways'],
         ))
         ->create();
     }
